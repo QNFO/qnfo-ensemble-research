@@ -41,5 +41,14 @@
     }
   },
   "materialization_note": "All three writers hit the child-session frozen View ceiling (CHILD-FROZEN-VIEW-1): zero tool access, so drafts were delivered inline in their final answers and materialized verbatim by the parent session from the child answers. Child answer sha256s above are the collection-time anchors; file hashes are post-materialization. Interim drafts are frozen: do not modify after this manifest.",
-  "first_writer_attempt_note": "writer-a original delegation (7dVF-W4NFS6xWcyiOoq6D) failed with 'Child session completed without a final answer' before producing content; the retry delegation produced the recorded answer."
+  "first_writer_attempt_note": "writer-a original delegation (7dVF-W4NFS6xWcyiOoq6D) failed with 'Child session completed without a final answer' before producing content; the retry delegation produced the recorded answer.",
+  "reconciliation": {
+    "agent": "parent session (2026-09-08)",
+    "generated_at": "2026-09-08T11:57:51.516782Z",
+    "files": {
+      "citation-audit.md": "6dd7bee710f334122a41779ce045387c7525ef952e1484caca3977fd47a36f68",
+      "RECONCILIATION.md": "fdbf4642dee14e6c92ab26b38327e3c9e11b20616ba4e3dd1cc128fd8da60f2d",
+      "reconciled-paper.md": "d96ac49ae3a2317dd127128880c47eec33e3827487256ff5b1a1b42d47a5ac40"
+    }
+  }
 }
