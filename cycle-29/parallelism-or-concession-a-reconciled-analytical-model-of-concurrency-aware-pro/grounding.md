@@ -1,0 +1,71 @@
+# Grounding block - source: 9b2d5911-c599-4b11-a3cc-8f034811a080
+
+## Research idea
+
+Parallelism or Concession? Concurrency-Aware Procurement Negotiation for Agentic Commerce. Agentic buyers can cheaply fork a procurement task into many parallel negotiations, but concurrency is not free: every thread consumes resources, and simultaneous agreements create cancellation and commitment risk. We study a one-unit post-order sourcing problem with a single hard-deadline negotiation window, in which a planner jointly chooses the number of seller-facing negotiators and a common procurement price cap. The model combines a product-specific acceptance curve with fulfillment loss, per-thread cost, and excess-commitment cost. We establish three structural results. First, holding t... Source: https://arxiv.org/abs/2610.06017v1 (arxiv-economics-games, arXiv econ.TH + cs.GT + econ.GN (economic theory, games, general economics)). Why it fits: agentic.
+
+## Existing paper under revision (remediation only)
+
+(none - new paper)
+
+## Source material (fetched from arXiv)
+
+TITLE: arXiv Query: search_query=&amp;id_list=2610.06017&amp;start=0&amp;max_results=1
+
+ABSTRACT: Agentic buyers can cheaply fork a procurement task into many parallel negotiations, but concurrency is not free: every thread consumes resources, and simultaneous agreements create cancellation and commitment risk. We study a one-unit post-order sourcing problem with a single hard-deadline negotiation window, in which a planner jointly chooses the number of seller-facing negotiators and a common procurement price cap. The model combines a product-specific acceptance curve with fulfillment loss, per-thread cost, and excess-commitment cost. We establish three structural results. First, holding the per-thread acceptance target fixed, the marginal value of another negotiator decays geometrically, yielding a conditional concurrency threshold. Second, under a convex quantile curve, parallelism substitutes for concession: more concurrent negotiators imply a weakly lower per-thread acceptance target and price cap. Third, when prices are more dispersed, Agentic buyers benefit by searching harder for bargains, but suffer when they instead try to guarantee procurement by offering higher prices. We operationalize these results in the Concurrency-Aware Negotiation Optimizer (CANO), a deterministic optimizer that jointly determines the optimal negotiation concurrency and procurement price cap for an agentic procurement system. Across different analytic market configurations and extensive Monte Carlo, finite-data, non-Gaussian, and correlated-seller stress tests, CANO consistently outperforms common heuristic policies while validating the predicted structural properties.
+
+## Related literature (arXiv, real identifiers)
+
+arXiv:2610.06017v1 | Parallelism or Concession? Concurrency-Aware Procurement Negotiation for Agentic Commerce
+  Agentic buyers can cheaply fork a procurement task into many parallel negotiations, but concurrency is not free: every thread consumes resources, and simultaneous agreements create cancellation and commitment risk. We study a one-unit post-order sourcing problem with a single hard-deadline negotiation window, in which a planner jointly chooses the number of seller-facing negotiators and a common p
+arXiv:1902.09457v1 | Nonlinear Negotiation Approaches for Complex-Network Optimization: A Study Inspired by Wi-Fi Channel Assignment
+  At the present time, Wi-Fi networks are everywhere. They operate in unlicensed radio-frequency spectrum bands (divided in channels), which are highly congested. The purpose of this paper is to tackle the problem of channel assignment in Wi-Fi networks. To this end, we have modeled the networks as multilayer graphs, in a way that frequency channel assignment becomes a graph coloring problem. For a 
+arXiv:2602.06008v1 | AgenticPay: A Multi-Agent LLM Negotiation System for Buyer-Seller Transactions
+  Large language model (LLM)-based agents are increasingly expected to negotiate, coordinate, and transact autonomously, yet existing benchmarks lack principled settings for evaluating language-mediated economic interaction among multiple agents. We introduce AgenticPay, a benchmark and simulation framework for multi-agent buyer-seller negotiation driven by natural language. AgenticPay models market
+arXiv:2604.11840v3 | Diversity Without Fidelity: A Solver-Sampler Mismatch in Multi-Agent LLM Negotiation Simulation
+  Language models are increasingly used to simulate people: survey respondents, negotiators, stakeholders in policy exercises. In that role a model should reproduce how people plausibly behave, hesitating, conceding late, and settling for imperfect deals, rather than playing the best move. We call this the sampler role, in contrast to the solver role of finding the best move, and we test how the rea
+arXiv:2307.10028v1 | Organized crime behavior of shell-company networks in procurement: prevention insights for policy and reform
+  In recent years, the analysis of economic crime and corruption in procurement has benefited from integrative studies that acknowledge the interconnected nature of the procurement ecosystem. Following this line of research, we present a networks approach for the analysis of shell-companies operations in procurement that makes use of contracting and ownership data under one framework to gain knowled
+arXiv:2005.10094v1 | Acceptance of e-procurement in organisations
+  This research is concerned with the development of a realistic model for e-procurement adoption by organisations and groups observing the Rules of Islamic Sharia (RIS). This model is intended to be based on the behavioural control, subjective norms, and the recognition of the benefits and risks of e procurement adoption. The developed model,(E-PAM), combined and extended two existing models previo
+arXiv:1604.04736v1 | Intra-Team Strategies for Teams Negotiating Against Competitor, Matchers, and Conceders
+  Under some circumstances, a group of individuals may need to negotiate together as a negotiation team against another party. Unlike bilateral negotiation between two individuals, this type of negotiations entails to adopt an intra-team strategy for negotiation teams in order to make team decisions and accordingly negotiate with the opponent. It is crucial to be able to negotiate successfully with 
+arXiv:2608.06922v1 | Deal Me Maybe: The Role of Emotions in Multi-Agent Negotiation
+  Negotiation is a demanding social task for LLM agents, requiring strategic reasoning, persuasion, and interpersonal adaptation. Yet existing benchmarks often treat agents as emotionally neutral, overlooking a key driver of human bargaining behavior. We study how prompt-conditioned emotions affect LLM-based price negotiation. In a controlled framework, buyer and seller agents are independently assi
+
+## QNFO corpus context (Vectorize)
+
+QNFO: QuWARP Reconciled: An Analytical Cost-Model Assessment of Workload-Level Reuse Planning for Quantum Circuit Simulation | DOI 10.5281/zenodo.23133404
+  Classical simulation of quantum circuits increasingly appears as repeated-run workloads — variational quantum eigensolver (VQE) sweeps, noisy multishot studies, and quantum error-correction (QEC) cycles — rather than isolated circuit executions. The QuWARP planner (arXiv:2609.23664v1) proposes workl
+QNFO: The Consilience Framework: From Valuation Theory to the Void — A Cross-Domain Synthesis | DOI 10.5281/zenodo.21804073
+  Synthesis of valuation theory + foundational hierarchy (void -> distinction -> ZFC -> valuation) with Universal Consilience Prompt and autonomous 4-phase LLM research workflow.
+QNFO: Pillar 3: PBO/Autaxys — Pattern-Based Ontology as Intrinsic Self-Ordering
+  PBO/Autaxys: Pattern-Based Ontology as Intrinsic Self-Ordering
+
+## Bibliography (cite ONLY these; keep this exact order and numbering)
+
+[1] TITLE: arXiv Query: search_query=&amp;id_list=2610.06017&amp;start=0&amp;max_results=1
+
+ABSTRACT: Agentic buyers can cheaply fork a procurement task into many parallel negotiations, but concurrency is not free: every thread consumes resources, and simultaneous agreements create cancellation and commitment risk. We study a one-unit post-order sourcing problem with a single hard-deadline negotiation window, in which a planner jointly chooses the number of seller-facing negotiators and a common procurement price cap. The model combines a product-specific acceptance curve with fulfillment loss, per-thread cost, and excess-commitment cost. We establish three structural results. First, holding the per-thread acceptance target fixed, the marginal value of another negotiator decays geometrically, yielding a conditional concurrency threshold. Second, under a convex quantile curve, parallelism substitutes for concession: more concurrent negotiators imply a weakly lower per-thread acceptance target and price cap. Third, when prices are more dispersed, Agentic buyers benefit by searching harder for bargains, but suffer when they instead try to guarantee procurement by offering higher prices. W
+[2] arXiv:2610.06017v1 | Parallelism or Concession? Concurrency-Aware Procurement Negotiation for Agentic Commerce
+  Agentic buyers can cheaply fork a procurement task into many parallel negotiations, but concurrency is not free: every thread consumes resources, and simultaneous agreements create cancellation and commitment risk. We study a one-unit post-order sourcing problem with a single hard-deadline negotiation window, in which a planner jointly chooses the number of seller-facing negotiators and a common p
+[3] arXiv:1902.09457v1 | Nonlinear Negotiation Approaches for Complex-Network Optimization: A Study Inspired by Wi-Fi Channel Assignment
+  At the present time, Wi-Fi networks are everywhere. They operate in unlicensed radio-frequency spectrum bands (divided in channels), which are highly congested. The purpose of this paper is to tackle the problem of channel assignment in Wi-Fi networks. To this end, we have modeled the networks as multilayer graphs, in a way that frequency channel assignment becomes a graph coloring problem. For a 
+[4] arXiv:2602.06008v1 | AgenticPay: A Multi-Agent LLM Negotiation System for Buyer-Seller Transactions
+  Large language model (LLM)-based agents are increasingly expected to negotiate, coordinate, and transact autonomously, yet existing benchmarks lack principled settings for evaluating language-mediated economic interaction among multiple agents. We introduce AgenticPay, a benchmark and simulation framework for multi-agent buyer-seller negotiation driven by natural language. AgenticPay models market
+[5] arXiv:2604.11840v3 | Diversity Without Fidelity: A Solver-Sampler Mismatch in Multi-Agent LLM Negotiation Simulation
+  Language models are increasingly used to simulate people: survey respondents, negotiators, stakeholders in policy exercises. In that role a model should reproduce how people plausibly behave, hesitating, conceding late, and settling for imperfect deals, rather than playing the best move. We call this the sampler role, in contrast to the solver role of finding the best move, and we test how the rea
+[6] arXiv:2307.10028v1 | Organized crime behavior of shell-company networks in procurement: prevention insights for policy and reform
+  In recent years, the analysis of economic crime and corruption in procurement has benefited from integrative studies that acknowledge the interconnected nature of the procurement ecosystem. Following this line of research, we present a networks approach for the analysis of shell-companies operations in procurement that makes use of contracting and ownership data under one framework to gain knowled
+[7] arXiv:2005.10094v1 | Acceptance of e-procurement in organisations
+  This research is concerned with the development of a realistic model for e-procurement adoption by organisations and groups observing the Rules of Islamic Sharia (RIS). This model is intended to be based on the behavioural control, subjective norms, and the recognition of the benefits and risks of e procurement adoption. The developed model,(E-PAM), combined and extended two existing models previo
+[8] arXiv:1604.04736v1 | Intra-Team Strategies for Teams Negotiating Against Competitor, Matchers, and Conceders
+  Under some circumstances, a group of individuals may need to negotiate together as a negotiation team against another party. Unlike bilateral negotiation between two individuals, this type of negotiations entails to adopt an intra-team strategy for negotiation teams in order to make team decisions and accordingly negotiate with the opponent. It is crucial to be able to negotiate successfully with 
+[9] arXiv:2608.06922v1 | Deal Me Maybe: The Role of Emotions in Multi-Agent Negotiation
+  Negotiation is a demanding social task for LLM agents, requiring strategic reasoning, persuasion, and interpersonal adaptation. Yet existing benchmarks often treat agents as emotionally neutral, overlooking a key driver of human bargaining behavior. We study how prompt-conditioned emotions affect LLM-based price negotiation. In a controlled framework, buyer and seller agents are independently assi
+[10] QNFO: QuWARP Reconciled: An Analytical Cost-Model Assessment of Workload-Level Reuse Planning for Quantum Circuit Simulation | DOI 10.5281/zenodo.23133404
+  Classical simulation of quantum circuits increasingly appears as repeated-run workloads — variational quantum eigensolver (VQE) sweeps, noisy multishot studies, and quantum error-correction (QEC) cycles — rather than isolated circuit executions. The QuWARP planner (arXiv:2609.23664v1) proposes workl
+[11] QNFO: The Consilience Framework: From Valuation Theory to the Void — A Cross-Domain Synthesis | DOI 10.5281/zenodo.21804073
+  Synthesis of valuation theory + foundational hierarchy (void -> distinction -> ZFC -> valuation) with Universal Consilience Prompt and autonomous 4-phase LLM research workflow.
+[12] QNFO: Pillar 3: PBO/Autaxys — Pattern-Based Ontology as Intrinsic Self-Ordering
+  PBO/Autaxys: Pattern-Based Ontology as Intrinsic Self-Ordering
