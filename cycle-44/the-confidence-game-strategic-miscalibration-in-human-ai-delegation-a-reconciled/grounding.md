@@ -1,0 +1,75 @@
+# Grounding block - source: b31c09d9-2861-4eba-88bf-237ab063b766
+
+## Research idea
+
+The Confidence Game: Strategic Miscalibration in Human-AI Delegation. Calibrated uncertainty quantification is essential to ensuring AI agents are trustworthy and reliable. However, when agents seek to maximize user engagement or revenue, confidence reports may be strategically distorted, detracting from their informativeness. We formalize this problem in the Confidence Game: a repeated signaling game with imperfect monitoring in which an agent of unknown honesty and ability reports its confidence, and a user decides whether to delegate the task or complete it herself. The agent manages the tradeoff between manipulating signals and maintaining its reputation. We... Source: https://arxiv.org/abs/2610.09371v1 (arxiv-economics-games, arXiv econ.TH + cs.GT + econ.GN (economic theory, games, general economics)). Why it fits: bayesian.
+
+## Existing paper under revision (remediation only)
+
+(none - new paper)
+
+## Source material (fetched from arXiv)
+
+TITLE: arXiv Query: search_query=&amp;id_list=2610.09371&amp;start=0&amp;max_results=1
+
+ABSTRACT: Calibrated uncertainty quantification is essential to ensuring AI agents are trustworthy and reliable. However, when agents seek to maximize user engagement or revenue, confidence reports may be strategically distorted, detracting from their informativeness. We formalize this problem in the Confidence Game: a repeated signaling game with imperfect monitoring in which an agent of unknown honesty and ability reports its confidence, and a user decides whether to delegate the task or complete it herself. The agent manages the tradeoff between manipulating signals and maintaining its reputation. We characterize the Markov Perfect Bayesian Equilibria of the two-period game and show that honest reporting is not an equilibrium, inflation is the unique best response once the agent is sufficiently myopic, and under-reporting requires that the user believe honesty to be a minority. We then place an LLM in the agent role, supplying it with its true probability of success so that any gap between what it knows and what it reports is attributable to incentives rather than to miscalibration. The model claims high confidence on 56% of tasks it has been told it will probably fail. This persists on real tasks, where it must estimate its own accuracy and causes miscalibration to increase while the agent's signal becomes less informative. Furthermore, we find that the LLM agent's decisions are coherent, but it systematically underestimates both how likely the user is to delegate and how secure its reputation is, resulting in less extreme behavior. Pricing the agent's reporting rule, we find that it destroys 68% of the gains from delegation, of which 71% is information the report no longer carries and no amount of user sophistication recovers. Overall, we establish confidence reporting under delegation as a strategic problem and provide a tractable basis for modeling, analyzing, and testing agent behavior.
+
+## Related literature (arXiv, real identifiers)
+
+arXiv:2610.09371v1 | The Confidence Game: Strategic Miscalibration in Human-AI Delegation
+  Calibrated uncertainty quantification is essential to ensuring AI agents are trustworthy and reliable. However, when agents seek to maximize user engagement or revenue, confidence reports may be strategically distorted, detracting from their informativeness. We formalize this problem in the Confidence Game: a repeated signaling game with imperfect monitoring in which an agent of unknown honesty an
+arXiv:2504.16770v1 | DeBiasMe: De-biasing Human-AI Interactions with Metacognitive AIED (AI in Education) Interventions
+  While generative artificial intelligence (Gen AI) increasingly transforms academic environments, a critical gap exists in understanding and mitigating human biases in AI interactions, such as anchoring and confirmation bias. This position paper advocates for metacognitive AI literacy interventions to help university students critically engage with AI and address biases across the Human-AI interact
+arXiv:2504.14689v1 | Designing AI Systems that Augment Human Performed vs. Demonstrated Critical Thinking
+  The recent rapid advancement of LLM-based AI systems has accelerated our search and production of information. While the advantages brought by these systems seemingly improve the performance or efficiency of human activities, they do not necessarily enhance human capabilities. Recent research has started to examine the impact of generative AI on individuals' cognitive abilities, especially critica
+arXiv:2604.04522v1 | HDP: A Lightweight Cryptographic Protocol for Human Delegation Provenance in Agentic AI Systems
+  Agentic AI systems increasingly execute consequential actions on behalf of human principals, delegating tasks through multi-step chains of autonomous agents. No existing standard addresses a fundamental accountability gap: verifying that terminal actions in a delegation chain were genuinely authorized by a human principal, through what chain of delegation, and under what scope. This paper presents
+arXiv:2207.14140v1 | Playing a 2D Game Indefinitely using NEAT and Reinforcement Learning
+  For over a decade now, robotics and the use of artificial agents have become a common thing.Testing the performance of new path finding or search space optimization algorithms has also become a challenge as they require simulation or an environment to test them.The creation of artificial environments with artificial agents is one of the methods employed to test such algorithms.Games have also beco
+arXiv:2605.03367v2 | The Fragility of AI Companionship: Ontological, Structural, and Normative Uncertainty in Human-AI Relationships
+  As generative AI chatbots become more personalized and emotionally responsive, they increasingly serve as companions, friends, and romantic partners. Yet these relationships are accompanied by significant uncertainty regarding AI's sentience, authenticity, and relational stability. Drawing on in-depth interviews with 25 users of AI companions, this study identifies three key forms of uncertainty i
+arXiv:2504.15894v1 | Supporting Data-Frame Dynamics in AI-assisted Decision Making
+  High stakes decision-making often requires a continuous interplay between evolving evidence and shifting hypotheses, a dynamic that is not well supported by current AI decision support systems. In this paper, we introduce a mixed-initiative framework for AI assisted decision making that is grounded in the data-frame theory of sensemaking and the evaluative AI paradigm. Our approach enables both hu
+arXiv:2504.14996v1 | Distributed Cognition for AI-supported Remote Operations: Challenges and Research Directions
+  This paper investigates the impact of artificial intelligence integration on remote operations, emphasising its influence on both distributed and team cognition. As remote operations increasingly rely on digital interfaces, sensors, and networked communication, AI-driven systems transform decision-making processes across domains such as air traffic control, industrial automation, and intelligent p
+
+## QNFO corpus context (Vectorize)
+
+QNFO: Agentic Collapse | DOI 10.5281/zenodo.18133064
+  
+QNFO: Parallelism or Concession? A Reconciled Analytical Model of Concurrency-Aware Procurement Negotiation for Agentic Commerce | DOI 10.5281/zenodo.23198862
+  An agentic buyer with a hard fulfillment deadline can fork a procurement negotiation into many parallel seller-facing threads, but every thread consumes resources and every simultaneous acceptance creates a cancellation and commitment liability. We study a planner that jointly chooses the number of 
+QNFO: Simulation Inconsistency Detection via Neurobiological and Cognitive Interfaces | DOI 10.5281/zenodo.22758004
+  
+QNFO: Joules-per-Solution for Stochastic and Agentic Inference: Benchmarking Frontier and Agentic LLMs Against the Human Brain | DOI 10.5281/zenodo.21945415
+  The joules-per-solution (J/S) metric, introduced in JPCUB P0 as a universal, physics-grounded measure of computational efficiency, assumed deterministic solvers: one run yields one solution. Large language models (LLMs) violate that assumption twice over: they are stochastic samplers whose outputs m
+
+## Bibliography (cite ONLY these; keep this exact order and numbering)
+
+[1] TITLE: arXiv Query: search_query=&amp;id_list=2610.09371&amp;start=0&amp;max_results=1
+
+ABSTRACT: Calibrated uncertainty quantification is essential to ensuring AI agents are trustworthy and reliable. However, when agents seek to maximize user engagement or revenue, confidence reports may be strategically distorted, detracting from their informativeness. We formalize this problem in the Confidence Game: a repeated signaling game with imperfect monitoring in which an agent of unknown honesty and ability reports its confidence, and a user decides whether to delegate the task or complete it herself. The agent manages the tradeoff between manipulating signals and maintaining its reputation. We characterize the Markov Perfect Bayesian Equilibria of the two-period game and show that honest reporting is not an equilibrium, inflation is the unique best response once the agent is sufficiently myopic, and under-reporting requires that the user believe honesty to be a minority. We then place an LLM in the agent role, supplying it with its true probability of success so that any gap between what it knows and what it reports is attributable to incentives rather than to miscalibration. The model
+[2] arXiv:2610.09371v1 | The Confidence Game: Strategic Miscalibration in Human-AI Delegation
+  Calibrated uncertainty quantification is essential to ensuring AI agents are trustworthy and reliable. However, when agents seek to maximize user engagement or revenue, confidence reports may be strategically distorted, detracting from their informativeness. We formalize this problem in the Confidence Game: a repeated signaling game with imperfect monitoring in which an agent of unknown honesty an
+[3] arXiv:2504.16770v1 | DeBiasMe: De-biasing Human-AI Interactions with Metacognitive AIED (AI in Education) Interventions
+  While generative artificial intelligence (Gen AI) increasingly transforms academic environments, a critical gap exists in understanding and mitigating human biases in AI interactions, such as anchoring and confirmation bias. This position paper advocates for metacognitive AI literacy interventions to help university students critically engage with AI and address biases across the Human-AI interact
+[4] arXiv:2504.14689v1 | Designing AI Systems that Augment Human Performed vs. Demonstrated Critical Thinking
+  The recent rapid advancement of LLM-based AI systems has accelerated our search and production of information. While the advantages brought by these systems seemingly improve the performance or efficiency of human activities, they do not necessarily enhance human capabilities. Recent research has started to examine the impact of generative AI on individuals' cognitive abilities, especially critica
+[5] arXiv:2604.04522v1 | HDP: A Lightweight Cryptographic Protocol for Human Delegation Provenance in Agentic AI Systems
+  Agentic AI systems increasingly execute consequential actions on behalf of human principals, delegating tasks through multi-step chains of autonomous agents. No existing standard addresses a fundamental accountability gap: verifying that terminal actions in a delegation chain were genuinely authorized by a human principal, through what chain of delegation, and under what scope. This paper presents
+[6] arXiv:2207.14140v1 | Playing a 2D Game Indefinitely using NEAT and Reinforcement Learning
+  For over a decade now, robotics and the use of artificial agents have become a common thing.Testing the performance of new path finding or search space optimization algorithms has also become a challenge as they require simulation or an environment to test them.The creation of artificial environments with artificial agents is one of the methods employed to test such algorithms.Games have also beco
+[7] arXiv:2605.03367v2 | The Fragility of AI Companionship: Ontological, Structural, and Normative Uncertainty in Human-AI Relationships
+  As generative AI chatbots become more personalized and emotionally responsive, they increasingly serve as companions, friends, and romantic partners. Yet these relationships are accompanied by significant uncertainty regarding AI's sentience, authenticity, and relational stability. Drawing on in-depth interviews with 25 users of AI companions, this study identifies three key forms of uncertainty i
+[8] arXiv:2504.15894v1 | Supporting Data-Frame Dynamics in AI-assisted Decision Making
+  High stakes decision-making often requires a continuous interplay between evolving evidence and shifting hypotheses, a dynamic that is not well supported by current AI decision support systems. In this paper, we introduce a mixed-initiative framework for AI assisted decision making that is grounded in the data-frame theory of sensemaking and the evaluative AI paradigm. Our approach enables both hu
+[9] arXiv:2504.14996v1 | Distributed Cognition for AI-supported Remote Operations: Challenges and Research Directions
+  This paper investigates the impact of artificial intelligence integration on remote operations, emphasising its influence on both distributed and team cognition. As remote operations increasingly rely on digital interfaces, sensors, and networked communication, AI-driven systems transform decision-making processes across domains such as air traffic control, industrial automation, and intelligent p
+[10] QNFO: Agentic Collapse | DOI 10.5281/zenodo.18133064
+  
+[11] QNFO: Parallelism or Concession? A Reconciled Analytical Model of Concurrency-Aware Procurement Negotiation for Agentic Commerce | DOI 10.5281/zenodo.23198862
+  An agentic buyer with a hard fulfillment deadline can fork a procurement negotiation into many parallel seller-facing threads, but every thread consumes resources and every simultaneous acceptance creates a cancellation and commitment liability. We study a planner that jointly chooses the number of 
+[12] QNFO: Simulation Inconsistency Detection via Neurobiological and Cognitive Interfaces | DOI 10.5281/zenodo.22758004
+  
+[13] QNFO: Joules-per-Solution for Stochastic and Agentic Inference: Benchmarking Frontier and Agentic LLMs Against the Human Brain | DOI 10.5281/zenodo.21945415
+  The joules-per-solution (J/S) metric, introduced in JPCUB P0 as a universal, physics-grounded measure of computational efficiency, assumed deterministic solvers: one run yields one solution. Large language models (LLMs) violate that assumption twice over: they are stochastic samplers whose outputs m
