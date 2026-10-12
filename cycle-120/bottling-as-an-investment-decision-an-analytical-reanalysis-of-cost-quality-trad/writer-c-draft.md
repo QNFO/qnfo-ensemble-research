@@ -1,0 +1,85 @@
+# Bottling as an Investment Decision: An Analytical Framework for Turning LLM Capabilities Into Cheap, Reusable Artifacts
+
+## Abstract
+
+Organisations that run millions of similar queries through large language model (LLM) APIs face a cost structure in which per-instance pricing dominates, and the decision to invest in a cheaper task-specific artifact is currently made by hand, if at all. The BOTTLED benchmark [1][2] shows that LLM agents can make this investment autonomously — a capability its authors call "bottling" — but that strong zero-shot performance does not reliably transfer: 48 of 60 bottling runs fall below the lower bound of the 95% confidence interval of their model's zero-shot score, and 31 of 60 underperform a small-model distillation baseline. What is missing from the reported picture is an explicit decision theory: under what conditions should an agent bottle, and how surprising are the observed failure rates? This paper supplies that analysis. We formalise bottling as an investment problem with a quality-adjusted break-even workload, and we reanalyse the reported counts. Under an independence assumption, the probability of observing 48 or more of 60 runs below a per-model 95% confidence floor is approximately $1.3 \times 10^{-65}$, so bottling failures are a correlated, model-level property rather than per-run noise; by contrast, 31 of 60 runs below a distillation baseline is consistent with a coin flip (tail probability approximately 0.45 by normal approximation). On the reported successes, Opus 5's bottled artifact delivers approximately 539 times more macro-F1 per unit cost than direct querying, and 3.76 times more than the purpose-built "system one" model Jev. The analysis converts BOTTLED's empirical findings into a usable investment rule and a governance agenda for agent-created artifacts.
+
+## 1. Introduction
+
+A team operating a production LLM pipeline — classifying millions of query-product pairs, routing support tickets, labelling documents — pays per query. At per-instance API pricing, a workload of $10^6$ instances at even a modest per-query cost becomes a recurring line item that scales linearly with volume, and the standard remedies (prompt compression, smaller models, distillation) each require engineering effort that must be justified against the workload before it is spent. Today that justification is a human project decision: someone estimates volume, prototypes a small model or a reusable program, validates quality, and only then switches the workload over. The decision is slow, and for the long tail of medium-sized repetitive workloads it is often never made at all, so those workloads stay on expensive per-query inference indefinitely.
+
+LLM agents change what is possible here. If an agent can receive an entire unlabelled workload and autonomously produce a cheaper task-specific solution — training a small model, or writing a reusable program — then the investment decision itself can be automated, and the long tail of repetitive workloads becomes addressable. The BOTTLED benchmark [1][2] measures exactly this ability, which its authors name "bottling": turning general capabilities into task-specific solutions that balance answer quality and amortised cost, under fixed time, compute and LLM API budgets. Its headline findings cut both ways. Bottling can yield substantial savings — on query-product relevance classification, Opus 5 retains about 82% of its zero-shot macro-F1 at roughly 657 times lower reported cost, and recovers about 94% of the macro-F1 of Jev, a "system one" model built especially for cheap, repetitive inference, at a quarter of Jev's projected full-workload cost. But strong zero-shot performance does not reliably translate into strong bottling: models with similar zero-shot scores can differ substantially after bottling, 48 of 60 bottling runs score below the lower bound of the 95% confidence interval of their model's zero-shot performance, and 31 of 60 runs underperform the stronger of two small-model distillation baselines with the same token budget.
+
+What the benchmark report does not supply, and what a deployment decision needs, is the decision theory underneath the numbers. A practitioner reading "48 of 60 runs below the zero-shot confidence floor" cannot tell whether that is mild per-run noise or a structural property of current models; a practitioner reading "657 times cheaper" cannot tell at what workload size the investment pays off once quality loss is priced in. This paper provides both, using only arithmetic on the reported figures and a stated cost model. If the analysis holds, an operator can read any bottling result as an investment appraisal: a break-even workload, a quality-adjusted cost ratio, and a falsifiable expectation for how failure rates should behave if bottling skill were randomly distributed across runs.
+
+The contributions are:
+
+- A formal cost-and-quality model of bottling as an investment problem, with per-instance and quality-adjusted break-even workload formulas, derived in Section 3 and instantiated in Section 4.
+- An exact binomial reanalysis showing that the observed 48-of-60 failure count is inconsistent with independent per-run failures at any plausible rate (tail probability approximately $1.3 \times 10^{-65}$ under the 95% confidence-floor reading), derived in Section 4.
+- A contrasting analysis showing that 31 of 60 runs below the distillation baseline carries almost no evidence against a symmetric null (tail probability approximately 0.45 by normal approximation), derived in Section 4.
+- Computed quality-per-cost figures for the reported successes — approximately 539 times more macro-F1 per unit cost than direct querying, and 3.76 times more than Jev — with sensitivity to the retention assumption, derived in Section 4.
+- A practical adoption pathway, readiness assessment, and governance agenda for agent-created artifacts, given in Section 7.
+
+## 2. Background and Related Work
+
+The direct subject of this paper is the BOTTLED benchmark and its underlying paper, "Agent in a Bottle: Can LLM Agents Turn Their Capabilities Into Cheap, Scalable Artifacts?" [1][2]. The supplied abstract states the problem and the experimental design: LLM agents receive an entire unlabelled workload and must complete it under fixed time, compute and LLM API budgets, choosing their own approach such as training a small model or writing a reusable program. Across ten models and three tasks, strong zero-shot task performance does not reliably translate into strong bottling capability; 48 of 60 bottling runs score below the lower bound of the 95% confidence interval of their model's zero-shot performance, and 31 of 60 runs underperform the stronger of two small-model distillation baselines with the same token budget. The same abstract reports the positive results this paper quantifies: Opus 5 retains about 82% of its zero-shot macro-F1 on query-product relevance classification at roughly 657 times lower reported cost, and recovers about 94% of the macro-F1 of Jev, a "system one" model built for cheap, repetitive inference, at a quarter of Jev's projected full-workload cost. Entries [1] and [2] are two records of the same work — a query record and a titled record — and this paper treats them as one source, citing both where the benchmark's design and numbers are invoked.
+
+The closest conceptual precursor in the supplied bibliography is the plan-reuse mechanism for LLM-driven agents [9]. Its abstract describes LLM-driven personal assistants that receive user requests, generate plans using an LLM, execute those plans through tools, and return results; the contribution is a mechanism for reusing plans across requests. Plan reuse and bottling share the same economic instinct — pay once for a structure, then replay it cheaply — but plan reuse operates at the granularity of a single request's plan, whereas bottling operates at the granularity of an entire workload's solution. The supplied summary of [9] gives no further detail on the mechanism's internals, so this paper draws only the granularity contrast.
+
+Work on conventions and shared reusable structures in multi-agent reinforcement learning supplies a second parallel. The Hanabi study [7] states that the card game is a strong medium for testing and developing multi-agent reinforcement learning algorithms because of its cooperative nature, partial observability, limited communication and complexity, and that augmenting the action space with conventions improves multi-agent cooperation. A convention is a compressed, reusable coordination artifact; bottling asks whether an LLM agent can manufacture the analogous artifact for a workload. The survey of multi-agent deep reinforcement learning with communication [3] frames communication as an effective mechanism for coordinating agent behaviours, broadening their views of the environment and supporting collaboration, with agents exchanging various types of messages. In bottling terms, the "message" an agent sends to its own future is the artifact itself — a trained model or a program — and the survey's framing of communication as performance-improving is the multi-agent analogue of the amortisation argument formalised in Section 3.
+
+The semantic-web line of work [6] addresses inter-agent communication at the semantic level, introducing an efficient mechanism for discovering semantic relationships among agent communication protocols constituted of communication acts. Its relevance here is structural: if agents autonomously produce artifacts that other systems will consume, the artifacts need discoverable, machine-readable descriptions of what they do, and [6] is the supplied bibliography's only entry addressing protocol-level semantic relationships. The entry's summary lists the mechanism's motivating features but, as supplied, does not state results in detail, so no performance claim is drawn from it.
+
+A complementary application-side precedent is Focus Agent [5], an LLM-powered framework that, in the human-computer interaction domain, simulates both the focus group for data collection and acts as a moderator, motivated by the observation that focus groups are resource-intensive and demand skilled moderators and meticulous preparation. Focus Agent substitutes an LLM framework for an expensive human process; bottling substitutes a cheap artifact for an expensive per-instance inference process. Both are instances of the same substitution logic, and the Focus Agent summary's emphasis on preparation effort parallels this paper's setup-cost term $C_0$.
+
+The risk literature supplies the governance motivation. "Agents at Risk" [4] states that LLM-based agents are increasingly deployed in applications such as trip-planning and web-use agents, and that prior work has shown agents are vulnerable to context confusion, where external adversarial content incorporated into the agent's reasoning context may be treated as task-relevant constraints. An agent that autonomously writes and deploys a reusable artifact amplifies this exposure: a artifact trained or programmed under context confusion encodes the confusion into every downstream instance. The supplied summary of [4] notes that the extension it studies concerns user behaviour — users unwittingly undermining LLM safety — which bears on who supervises the bottling run. The value-systems work [8] frames Agreement Technologies as open computer systems in which autonomous software agents interact on behalf of humans to reach mutually acceptable agreements, and argues with the advance of AI systems that such agreements must remain aligned with ethical principles and moral values; it studies learning the value systems of agents with preference-based and inverse reinforcement learning. A bottled artifact is an agreement of sorts — a commitment about how a workload will be answered — and [8] supplies the supplied bibliography's only vocabulary for asking whether that commitment tracks the principal's values.
+
+Two QNFO entries connect the analysis to model selection and to research governance. The LiveBench-grounded audit [10] reports an August 2026 audit of the frontier LLM landscape for mathematics-heavy scientific research and agentic AI, grounded in the contamination-free LiveBench 2026-06-25 benchmark, finding that no Llama model ranks in the top 42 and naming DeepSeek V4 Pro 0813 as the mathematics price-performance outlier (the supplied summary is truncated mid-sentence at that point, so no further finding is drawn from it). Because bottling outcomes differ substantially across models with similar zero-shot scores [1][2], selection criteria that look only at benchmark rank — the kind [10] audits — are insufficient for choosing a bottling agent, which motivates the two-axis reading developed in Section 4. The epistemic-legibility position paper [11] argues that as AI systems take on hypothesis generation, experiment planning, analysis and writing, the scientific ecosystem's bottleneck shifts from production to evaluation, verification and governance, and contributes a documented case and an ignorance-auditing instrument to that problem. Bottled artifacts are precisely the kind of agent-produced output that [11]'s governance instrument targets: an artifact's provenance, validation budget and failure mode should be auditable before a workload is switched over. The flag-structures survey [12] supplies, in its summary, a family of mathematically precise objects — flag varieties, flag matroids, flag algebras, Finsler directional curvature invariants — and advertises explicit counting derivations; its methodological parallel to this paper is the insistence on explicit counting, though its subject matter does not otherwise bear on bottling. Finally, the entry "Agentic Collapse" [13] supplies a title with no abstract text; no substantive claim is drawn from it, and it is listed here only to document that the supplied bibliography was consulted in full.
+
+## 3. Methods
+
+### 3.1 The bottling investment problem
+
+Let a workload consist of $n$ instances. Two execution paths exist. The direct path queries a large model on every instance at per-instance cost $c_L$, yielding quality $Q_L$ (normalised to $Q_L = 1$). The bottled path first invests a one-time setup cost $C_0$ — tokens, compute and time spent building the artifact, such as training a small model or writing a reusable program, within the benchmark's fixed budgets [1][2] — and then serves each instance at per-instance cost $c_A < c_L$, yielding quality $Q_A = \rho\, Q_L$ with retention $0 \le \rho \le 1$.
+
+The two paths' total costs are
+
+$$C_{\text{direct}}(n) = n\,c_L, \qquad C_{\text{bottled}}(n) = C_0 + n\,c_A.$$
+
+The raw break-even workload $n^*$ solves $C_{\text{bottled}}(n^*) = C_{\text{direct}}(n^*)$:
+
+$$n^* = \frac{C_0}{c_L - c_A}.$$
+
+Quality-adjusted break-even instead equalises cost per unit of quality. The direct path costs $c_L$ per unit quality; the bottled path costs $(C_0 + n c_A)/(n\rho)$ per unit quality. Setting them equal,
+
+$$\frac{C_0 + n c_A}{n \rho} = c_L \quad\Longrightarrow\quad n^*_\rho = \frac{C_0}{\rho\, c_L - c_A}.$$
+
+Since $\rho < 1$, the denominator shrinks and $n^*_\rho > n^*$: pricing the quality loss raises the break-even workload. Bottling is the correct investment exactly when the expected workload size $n$ exceeds $n^*_\rho$.
+
+### 3.2 Quality-per-cost figures of merit
+
+Two dimensionless ratios summarise a bottling outcome. The cost ratio is
+
+$$r = \frac{c_A}{c_L},$$
+
+and the quality-cost product — quality retained per unit of relative cost, equivalently the factor by which the bottled path multiplies macro-F1 delivered per unit cost — is
+
+$$B = \frac{\rho}{r} = \rho \cdot \frac{c_L}{c_A}.$$
+
+$B > 1$ means the bottled path dominates the direct path in quality-adjusted cost; $B$ is the number reported in Section 4 for the benchmark's headline successes.
+
+### 3.3 Statistical reanalysis of the reported counts
+
+BOTTLED reports counts over $N = 60$ bottling runs (ten models, three tasks [1][2]). Two counts are reanalysed.
+
+**Count 1: zero-shot confidence floor.** Each run is compared against the lower bound of the 95% confidence interval of its own model's zero-shot performance. If a run's outcome were independent of its model's zero-shot distribution, the probability of falling below that floor by chance is the one-sided tail mass $p_0 = 0.025$ (the 95% two-sided interval leaves 2.5% in each tail). Under $H_0$: 60 independent runs each below the floor with probability $p_0 = 0.025$, the count $X$ is binomial:
+
+$$X \sim \mathrm{Binomial}(N=60,\ p_0 = 0.025), \qquad \mathbb{E}[X] = N p_0 = 1.5.$$
+
+The reported observation is $X = 48$. The tail probability is
+
+$$P(X \ge 48) = \sum_{k=48}^{60} \binom{60}{k} (0.025)^k (0.975)^{60-k},$$
+
+evaluated in Section 4 by explicit log-arithmetic.
+
+**Count 2: distillation baseline.** Each run is compared against the stronger of two small-model distillation baselines with the same token budget. With
