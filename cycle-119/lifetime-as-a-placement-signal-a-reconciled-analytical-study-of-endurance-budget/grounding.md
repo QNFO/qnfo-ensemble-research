@@ -1,0 +1,75 @@
+# Grounding block - source: 6f7dd283-f7ca-4d4c-acae-ba1b84fb6ebe
+
+## Research idea
+
+Lachesis: Lifetime-Aware KV Cache Placement for Agent Serving across HBM and High-Bandwidth Flash. Large language model (LLM) serving is increasingly dominated by agentic workloads, in which agents and their sub-agents accumulate context as KV cache across many requests, consuming substantial memory. High-bandwidth flash (HBF) is a promising solution, providing an order of magnitude greater capacity at HBM-class read bandwidth, but its finite write endurance is the key limiting factor. Our key insight is that KV cache should be placed across HBM and HBF by its lifetime. Placing shorter-lived data in HBM lets HBM absorb more of an agent run's writes and sends less of them to HBF. As the life... Source: https://arxiv.org/abs/2610.08378v1 (arxiv-computing-energy, arXiv cs.ET + physics.app-ph + cs.PF + cs.AR (emerging technologies, applied physics, performance, architecture: the energy of computing)). Why it fits: agentic.
+
+## Existing paper under revision (remediation only)
+
+(none - new paper)
+
+## Source material (fetched from arXiv)
+
+TITLE: arXiv Query: search_query=&amp;id_list=2610.08378&amp;start=0&amp;max_results=1
+
+ABSTRACT: Large language model (LLM) serving is increasingly dominated by agentic workloads, in which agents and their sub-agents accumulate context as KV cache across many requests, consuming substantial memory. High-bandwidth flash (HBF) is a promising solution, providing an order of magnitude greater capacity at HBM-class read bandwidth, but its finite write endurance is the key limiting factor. Our key insight is that KV cache should be placed across HBM and HBF by its lifetime. Placing shorter-lived data in HBM lets HBM absorb more of an agent run's writes and sends less of them to HBF. As the lifetime of KV cache in agentic serving is dictated by the harness, the program that orchestrates the agents, we analyze its behavior and identify three axes along which lifetime diverges, temporal, structural, and inter-worker. Guided by these observations, we present Lachesis, a lifetime-aware KV cache placement layer between the agent harness and the serving engine. At write time, it places each segment in HBM or HBF according to its lifetime, and frees its blocks once the segment is no longer read. In trace-driven simulation, Lachesis extends HBF lifetime by 1.19-3.13x over HBM-first placement, reaching 3.3-12.2 device-years. Even under continuous 24x7 operation at the full load a tight SLO admits, HBF outlasts its five-year warranty on the multi-agent trace.
+
+## Related literature (arXiv, real identifiers)
+
+arXiv:2610.08378v1 | Lachesis: Lifetime-Aware KV Cache Placement for Agent Serving across HBM and High-Bandwidth Flash
+  Large language model (LLM) serving is increasingly dominated by agentic workloads, in which agents and their sub-agents accumulate context as KV cache across many requests, consuming substantial memory. High-bandwidth flash (HBF) is a promising solution, providing an order of magnitude greater capacity at HBM-class read bandwidth, but its finite write endurance is the key limiting factor. Our key 
+arXiv:2303.01648v1 | Congestion-aware routing and content placement in elastic cache networks
+  Caching can be leveraged to significantly improve network performance and mitigate congestion. However, characterizing the optimal tradeoff between routing cost and cache deployment cost remains an open problem. In this paper, for a network with arbitrary topology and congestion-dependent nonlinear cost functions, we aim to jointly determine the cache deployment, content placement, and hop-by-hop 
+arXiv:2604.24971v1 | PolyKV: A Shared Asymmetrically-Compressed KV Cache Pool for Multi-Agent LLM Inference
+  We present PolyKV, a system in which multiple concurrent inference agents share a single, asymmetrically compressed KV cache pool. Rather than allocating a separate KV cache per agent -- the standard paradigm -- PolyKV writes a compressed cache once and injects it into N independent agent contexts via HuggingFace DynamicCache objects. Compression is asymmetric: Keys are quantized at int8 (q8_0) to
+arXiv:2609.07175v1 | Enabling High-Bandwidth Flash for Generative Recommendation Serving with Write-Aware KV Cache Policy
+  Generative recommendation (GR) systems increasingly leverage user-level KV cache reuse to avoid recomputing long user histories. However, the growing KV cache capacity and bandwidth requirements introduce new challenges for memory system. High-Bandwidth Flash (HBF) provides a promising solution by offering substantially higher capacity than HBM while approaching HBM-class read bandwidth, enabling 
+arXiv:2606.29986v1 | HBM Is Not All You Need: Efficient Disaggregated LLM Serving across Memory-heterogeneous Accelerators
+  LLM inference comprises a compute-bound prefill phase and a memory-bound decode phase, and recent systems disaggregate them onto separate hardware. Yet today's datacenter GPUs rely on costly HBM whose bandwidth sits almost entirely idle during prefill. LLM serving across memory-heterogeneous accelerators (MemHA) pairs GDDR-based accelerators for prefill with HBM-based GPUs for decode, promising lo
+arXiv:2609.25782v1 | Hot-Cold Tiering of HBM and High Bandwidth Flash for Agentic LLM Serving
+  Large language model (LLM) serving is increasingly agentic, with multi-turn sessions that idle between actions yet must retain their full context. Limited GPU memory capacity forces inactive KV states to be evicted, so resuming a session incurs either costly recomputation or slow interconnect transfers. To address this, high bandwidth flash (HBF)-an on-package 3D-NAND memory offering orders-of-mag
+arXiv:1310.8494v1 | Using Cache-coloring to Mitigate Inter-set Write Variation in Non-volatile Caches
+  In recent years, researchers have explored use of non-volatile devices such as STT-RAM (spin torque transfer RAM) for designing on-chip caches, since they provide high density and consume low leakage power. A common limitation of all non-volatile devices is their limited write endurance. Further, since existing cache management policies are write-variation unaware, excessive writes to a few blocks
+arXiv:2305.16413v1 | Locality and Utilization in Placement Suboptimality
+  The mixed-size placement benchmarks described in this book chapter directly address several of the shortcomings in previously published suboptimality benchmarks. Two new sets of placement examples are constructed, one targeting the role of nonlocal nets in suboptimality, and another targeting the role of white space and large variations in module sizes. The first set, PEKO-MC, is a set of standard
+
+## QNFO corpus context (Vectorize)
+
+QNFO: Re-Entry Dynamics as a Switching Process: Comparing Hamiltonian Re-Entry Computation to von Neumann Switching Costs
+  Stored-program (von Neumann) architectures pay a per-operation switching cost for instruction fetch, decode, and memory traffic, while a proposed Hamiltonian-computation paradigm — motivated by the QNFO framework "Hamiltonian Dynamics as the Engine of Biological Computation" — identifies computation
+QNFO: QuWARP Reconciled: An Analytical Cost-Model Assessment of Workload-Level Reuse Planning for Quantum Circuit Simulation
+  Classical simulation of quantum circuits increasingly appears as repeated-run workloads — variational quantum eigensolver (VQE) sweeps, noisy multishot studies, and quantum error-correction (QEC) cycles — rather than isolated circuit executions. The QuWARP planner (arXiv:2609.23664v1) proposes workl
+QNFO: Thermodynamics of Structural Persistence (Topological Memory)
+  
+QNFO: Prioritizing Large Language Models for Scientific Research and Agentic AI: A LiveBench-Grounded Audit (August 2026)
+  An audit of the frontier large-language-model landscape (August 2026) for mathematics-heavy scientific research and agentic AI, grounded in the LiveBench 2026-06-25 contamination-free benchmark. Findings: no Llama model ranks in the top 42; DeepSeek V4 Pro 0813 is the mathematics price-performance o
+
+## Bibliography (cite ONLY these; keep this exact order and numbering)
+
+[1] TITLE: arXiv Query: search_query=&amp;id_list=2610.08378&amp;start=0&amp;max_results=1
+
+ABSTRACT: Large language model (LLM) serving is increasingly dominated by agentic workloads, in which agents and their sub-agents accumulate context as KV cache across many requests, consuming substantial memory. High-bandwidth flash (HBF) is a promising solution, providing an order of magnitude greater capacity at HBM-class read bandwidth, but its finite write endurance is the key limiting factor. Our key insight is that KV cache should be placed across HBM and HBF by its lifetime. Placing shorter-lived data in HBM lets HBM absorb more of an agent run's writes and sends less of them to HBF. As the lifetime of KV cache in agentic serving is dictated by the harness, the program that orchestrates the agents, we analyze its behavior and identify three axes along which lifetime diverges, temporal, structural, and inter-worker. Guided by these observations, we present Lachesis, a lifetime-aware KV cache placement layer between the agent harness and the serving engine. At write time, it places each segment in HBM or HBF according to its lifetime, and frees its blocks once the segment is no longer read
+[2] arXiv:2610.08378v1 | Lachesis: Lifetime-Aware KV Cache Placement for Agent Serving across HBM and High-Bandwidth Flash
+  Large language model (LLM) serving is increasingly dominated by agentic workloads, in which agents and their sub-agents accumulate context as KV cache across many requests, consuming substantial memory. High-bandwidth flash (HBF) is a promising solution, providing an order of magnitude greater capacity at HBM-class read bandwidth, but its finite write endurance is the key limiting factor. Our key 
+[3] arXiv:2303.01648v1 | Congestion-aware routing and content placement in elastic cache networks
+  Caching can be leveraged to significantly improve network performance and mitigate congestion. However, characterizing the optimal tradeoff between routing cost and cache deployment cost remains an open problem. In this paper, for a network with arbitrary topology and congestion-dependent nonlinear cost functions, we aim to jointly determine the cache deployment, content placement, and hop-by-hop 
+[4] arXiv:2604.24971v1 | PolyKV: A Shared Asymmetrically-Compressed KV Cache Pool for Multi-Agent LLM Inference
+  We present PolyKV, a system in which multiple concurrent inference agents share a single, asymmetrically compressed KV cache pool. Rather than allocating a separate KV cache per agent -- the standard paradigm -- PolyKV writes a compressed cache once and injects it into N independent agent contexts via HuggingFace DynamicCache objects. Compression is asymmetric: Keys are quantized at int8 (q8_0) to
+[5] arXiv:2609.07175v1 | Enabling High-Bandwidth Flash for Generative Recommendation Serving with Write-Aware KV Cache Policy
+  Generative recommendation (GR) systems increasingly leverage user-level KV cache reuse to avoid recomputing long user histories. However, the growing KV cache capacity and bandwidth requirements introduce new challenges for memory system. High-Bandwidth Flash (HBF) provides a promising solution by offering substantially higher capacity than HBM while approaching HBM-class read bandwidth, enabling 
+[6] arXiv:2606.29986v1 | HBM Is Not All You Need: Efficient Disaggregated LLM Serving across Memory-heterogeneous Accelerators
+  LLM inference comprises a compute-bound prefill phase and a memory-bound decode phase, and recent systems disaggregate them onto separate hardware. Yet today's datacenter GPUs rely on costly HBM whose bandwidth sits almost entirely idle during prefill. LLM serving across memory-heterogeneous accelerators (MemHA) pairs GDDR-based accelerators for prefill with HBM-based GPUs for decode, promising lo
+[7] arXiv:2609.25782v1 | Hot-Cold Tiering of HBM and High Bandwidth Flash for Agentic LLM Serving
+  Large language model (LLM) serving is increasingly agentic, with multi-turn sessions that idle between actions yet must retain their full context. Limited GPU memory capacity forces inactive KV states to be evicted, so resuming a session incurs either costly recomputation or slow interconnect transfers. To address this, high bandwidth flash (HBF)-an on-package 3D-NAND memory offering orders-of-mag
+[8] arXiv:1310.8494v1 | Using Cache-coloring to Mitigate Inter-set Write Variation in Non-volatile Caches
+  In recent years, researchers have explored use of non-volatile devices such as STT-RAM (spin torque transfer RAM) for designing on-chip caches, since they provide high density and consume low leakage power. A common limitation of all non-volatile devices is their limited write endurance. Further, since existing cache management policies are write-variation unaware, excessive writes to a few blocks
+[9] arXiv:2305.16413v1 | Locality and Utilization in Placement Suboptimality
+  The mixed-size placement benchmarks described in this book chapter directly address several of the shortcomings in previously published suboptimality benchmarks. Two new sets of placement examples are constructed, one targeting the role of nonlocal nets in suboptimality, and another targeting the role of white space and large variations in module sizes. The first set, PEKO-MC, is a set of standard
+[10] QNFO: Re-Entry Dynamics as a Switching Process: Comparing Hamiltonian Re-Entry Computation to von Neumann Switching Costs
+  Stored-program (von Neumann) architectures pay a per-operation switching cost for instruction fetch, decode, and memory traffic, while a proposed Hamiltonian-computation paradigm — motivated by the QNFO framework "Hamiltonian Dynamics as the Engine of Biological Computation" — identifies computation
+[11] QNFO: QuWARP Reconciled: An Analytical Cost-Model Assessment of Workload-Level Reuse Planning for Quantum Circuit Simulation
+  Classical simulation of quantum circuits increasingly appears as repeated-run workloads — variational quantum eigensolver (VQE) sweeps, noisy multishot studies, and quantum error-correction (QEC) cycles — rather than isolated circuit executions. The QuWARP planner (arXiv:2609.23664v1) proposes workl
+[12] QNFO: Thermodynamics of Structural Persistence (Topological Memory)
+  
+[13] QNFO: Prioritizing Large Language Models for Scientific Research and Agentic AI: A LiveBench-Grounded Audit (August 2026)
+  An audit of the frontier large-language-model landscape (August 2026) for mathematics-heavy scientific research and agentic AI, grounded in the LiveBench 2026-06-25 contamination-free benchmark. Findings: no Llama model ranks in the top 42; DeepSeek V4 Pro 0813 is the mathematics price-performance o
