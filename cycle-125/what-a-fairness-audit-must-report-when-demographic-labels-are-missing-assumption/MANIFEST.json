@@ -1,0 +1,33 @@
+{
+  "pipeline": "0.8.0-artifact-deposit",
+  "files": {
+    "grounding.md": {
+      "sha256": "32869760214c837a0d90db8567c1e6ecb1ff0a3982728d919250d0008972b7a7",
+      "bytes": 11119
+    },
+    "writer-a-draft.md": {
+      "sha256": "711c8f017f565beec4fa475bb5a470953ef041123c86896fbe440f7fb1495f03",
+      "bytes": 17609
+    },
+    "writer-b-draft.md": {
+      "sha256": "6cf8a437dc000f6af54b41ff46644ee13ef5fb884cb301b9bc04d390c7c68003",
+      "bytes": 23544
+    },
+    "writer-c-draft.md": {
+      "sha256": "07ac02d876893378e7ac2bc46e0bfce28c102ccb2afea5129ab1d25bc6f56630",
+      "bytes": 28772
+    },
+    "review-report.md": {
+      "sha256": "55cd7e05893af9a969afeda31a6211981f2323cfc4ebcf5b7707ba71fba33e0a",
+      "bytes": 5141
+    },
+    "verification.md": {
+      "sha256": "55211615b3a3ad8fcd2e7fc1ed5496b517c057e26600e73741b8dade8eab460d",
+      "bytes": 7587
+    },
+    "verification.py": {
+      "sha256": "1792027bf610088883aa1c52259aa508f4a747cda1bf779f76c99aac09ea28a8",
+      "bytes": 2691
+    }
+  }
+}
