@@ -1,0 +1,1 @@
+[{"find":"Assuming the same inputs as in Section 4 but allowing for a higher effective retention factor, the average tail entropy over a five‑generation re‑anchoring cycle is projected to be $59.3381$ bits.","replace":""}]
