@@ -1,0 +1,101 @@
+# Thermodynamic and Dynamical Viability of Tubulin Conformational Switching as Heat-Free Parallel Computation: An Analytical Energy Budget
+
+## Abstract
+
+Microtubules have been conjectured to act as parallel processors in which tubulin dimers switch between two conformational states like transistors, carrying information in shape rather than in electron flow and therefore dissipating almost no heat. The conjecture has never been tested against an explicit energy budget, so it remains unclear whether it is thermodynamically admissible or merely a metaphor. This paper builds that budget. Using the Landauer limit at physiological temperature, a mechanical spring model of the dimer's conformational displacement, and the computed dipole moments of the tubulin dimer reported by Mershin and co-workers ($|p_{\alpha\beta}| = 1740$ D), we derive the switching energy, the dipole-mediated neighbor coupling, the thermal error probability, the lattice packing density, and the volumetric heat load of a fully active microtubule lattice. The principal results are: the Landauer limit at $T = 310$ K is $2.967 \times 10^{-21}$ J per bit; the mechanical switching energy spans $0.017$ to $168.5\,k_B T$ depending on the assumed effective stiffness; the dipole energy difference between the two monomers is $7.21\,k_B T$ in a $10^{7}$ V/m field, giving a thermal error probability near $3 \times 10^{-9}$; and the screened dipole-dipole coupling between adjacent dimers is $2.49\,k_B T$, marginal for reliable state propagation. The heat-free claim survives only in a restricted sense: conformational switching can in principle operate near the Landauer limit, orders of magnitude below assumed electronic switching energies, but its dynamical usefulness depends on coupling strengths that sit close to the thermal noise floor.
+
+## 1. Introduction
+
+Engineers building dense computing systems face a wall made of heat. Every switching event in an electronic device dissipates energy, and at the densities at which modern chips operate the removal of that heat, not the fabrication of the transistors, sets the ceiling on computational throughput. A switching technology that moved information without charge transport would relax that ceiling, which is why proposals for computation carried by molecular shape rather than electron flow attract attention. The tubulin dimer, the 8-nm-long building block of the microtubule, has been proposed as exactly such an element: a two-state conformational switch arranged with roughly $10^{16}$ switches per square meter of microtubule surface, computing in parallel across the lattice with near-zero heat dissipation [4].
+
+The proposal matters to two audiences. For biophysicists, it makes a quantitative claim about whether the microtubule cytoskeleton could process information in cells beyond its accepted structural roles, a claim that changes which experiments on cellular signaling are worth performing. For device physicists, it asks whether a biological lattice achieves, by construction, the near-Landauer switching that electronic engineering pursues with difficulty. If the conjecture fails quantitatively, both audiences save themselves effort; if it holds within stated bounds, it identifies the specific parameter regime — stiffness, field strength, coupling — in which lattice computation is admissible.
+
+What blocks progress today is that the conjecture circulates as an analogy. Calling the dimer a "transistor" borrows the vocabulary of electronics without paying its quantitative costs: no energy per switch has been derived, no comparison to the Landauer limit has been made at equal density, and no check has been run on whether the dimer's geometry supports computationally useful state propagation rather than thermal noise. The decision that would change if this paper's result holds is precisely the decision to take the analogy seriously enough to measure it: a derived budget either licenses a targeted experiment on dimer switching energetics or closes the question with numbers.
+
+This paper derives that budget analytically and assesses dynamical plausibility with an explicit lattice model. The contributions are:
+
+- A derivation of the Landauer limit at physiological temperature, $E_L = 2.967 \times 10^{-21}$ J per bit at $T = 310$ K, as the irreducible floor for any conformational bit (Section 4.1).
+- A mechanical switching-energy model spanning $0.017$ to $168.5\,k_B T$, parameterized by effective dimer stiffness, showing that "heat-free" is a property of a parameter regime, not of the molecule (Section 4.2).
+- A dipole-based state-energy calculation using the computed monomer and dimer moments $|p_{\alpha}| = 552$ D, $|p_{\beta}| = 1193$ D, $|p_{\alpha\beta}| = 1740$ D [1], yielding a two-state energy difference of $7.21\,k_B T$ in a $10^{7}$ V/m field and a thermal error probability of $3.16 \times 10^{-9}$ (Section 4.3).
+- A screened dipole-dipole coupling estimate of $2.49\,k_B T$ between adjacent dimers, which bounds the feasibility of state propagation on the lattice (Section 4.4).
+- A lattice density and heat-load calculation: $5 \times 10^{24}$ dimers per cubic meter and a projected volumetric switching power of $2.5 \times 10^{7}$ to $2.5 \times 10^{9}$ W/m$^3$ at kilohertz switching rates (Section 4.5).
+- A dynamical assessment of the lattice as a cellular automaton, with a propagation-speed estimate of $8\ \mu\text{m/s}$ and a discussion of which update geometries the dimer's neighborhood supports (Sections 4.6 and 4.7).
+
+## 2. Background and Related Work
+
+The physical starting point for the conformational-switch picture is the GTP cycle of tubulin. Fygenson [4] frames the problem: microtubule dynamic instability arises from hydrolysis of the GTP bound to the beta-monomer of the tubulin dimer, the conformational change induced by hydrolysis is unknown, and disassembling microtubules peel into protofilaments of GDP-bound tubulin that curve away from the microtubule axis. That paper proposes the unfolding of a portion of the tubulin molecule into the microtubule interior as a plausible mechanism for the change. Two points carry directly into the present budget. First, the two conformational states of the dimer are physically real and biochemically distinct (GTP-bound versus GDP-bound), so the "bit" of the conjectured switch has a candidate material substrate. Second, the observed curving of GDP protofilaments away from the axis is a large-amplitude mechanical motion, which is what motivates modeling the switch as a spring displaced over nanometer distances in Section 4.2.
+
+The electrical properties of the dimer are quantified by Mershin, Nabiev, Samouillan and co-workers [1], who used computer simulation to calculate the electric dipole moments of the alpha and beta tubulin monomers and of the dimer, finding $|p_{\alpha}| = 552$ D, $|p_{\beta}| = 1193$ D and $|p_{\alpha\beta}| = 1740$ D, and corroborated their earlier surface-plasmon-resonance-derived results with independent SPR and refractometry measurements of the high-frequency dielectric constant and polarizability. These numbers are the quantitative backbone of Section 4.3: a two-state switch needs an energy difference between its states, and the difference between the monomer moments, $641$ D, provides one in any ambient electric field. The paper's title also signals its scope — quantum behavior and suggestions — and we use only its computed moments and the reported dielectric corroboration, not its speculative extensions.
+
+The computational picture of the lattice has an established modeling tradition in cellular automata. Argentini [5] introduces the Message Passing Fluid, an abstract fluid in which molecules move by means of the information they exchange with each other, on the basis of the rules and methods of a generalized cellular automaton, with the model intended for simulation by message-passing libraries in parallel computing, and presents a critical analysis of the necessary conditions for such a simulation. This is the closest methodological analogue to a microtubule lattice automaton: discrete agents on a lattice, local exchange rules, emergent macroscopic behavior. Section 4.6 adopts the same abstraction — dimers as processes, conformational states as their local variables, neighbor contact as the message channel — and Section 4.7 borrows the paper's critical stance by asking what the lattice's update rules must satisfy before any computation is possible.
+
+If the lattice dynamics are ever simulated at scale, the simulation itself is a parallel-computing problem, and three works define the relevant tooling. Ltaief and co-workers' Chunks and Tasks model [3] is a parallel programming model built on abstractions for both data and work, in which the programmer specifies how data and work split into chunks and tasks and the library maps them to physical resources; its introduction explicitly targets hierarchic, recursive algorithms where communication patterns are not known beforehand and may change dynamically, and notes that fault tolerance matters because hardware errors are unavoidable in large parallel calculations. A microtubule lattice simulation has exactly this shape — a regular data chunk per dimer, task-based neighbor updates, and a fault-tolerance requirement if the simulation runs long enough to accumulate errors — so [3] supplies the programming-model template. Skrzypczak and co-workers [2] demonstrate the GPU end of that template: their parallel Tabu Search for the Resource Constrained Project Scheduling Problem on CUDA performs schedule evaluation in which precedence earliest start times are computed as $\max_{\forall(j,i)\in E}(s_j + d_j)$ and combined with resource earliest start times as $es_i = \max(es_i^{prec}, es_i^{res})$, with a capacity-indexed resource evaluation algorithm proposed as a new approach and a heuristic, learned with the JRip classifier, selecting between time-indexed and capacity-indexed evaluation; experiments ran on an Nvidia Geforce GTX 650 Ti with 768 CUDA cores. The relevance is structural: a lattice automaton with local max/min update rules is the same class of data-parallel kernel, and [2] shows such kernels being scheduled and evaluated on commodity GPUs. Chittampally and co-workers [8] make the cost point directly: graphics processors once specialized for graphics are now used for highly computational intensive general-purpose applications, and very expensive GFLOPs and TFLOPs performance has become very cheap with GPGPUs — so the compute needed to sweep the parameter space of Section 4.2 across a full lattice is inexpensive by supercomputing standards. For validation of such a simulation, the AutoAnalyzer system of [7] automates performance debugging of SPMD-style parallel programs through four steps — instrumentation by source-to-source transformation, collection of wall-clock/CPU time and hardware-counter and communication data, bottleneck location, and root-cause analysis — and distinguishes dissimilarity bottlenecks, which cause process behavior dissimilarity, from disparity bottlenecks, which cause code-region behavior disparity; it was evaluated on production applications including a seismic tomography code and the parallel MPIBZIP2 compressor. A lattice simulation in which some dimers stall (for example at lattice seams or defects) would show exactly a dissimilarity bottleneck, so [7] supplies the diagnostic method. Finally, pLouvain and pLeiden [6] show how a lattice-adjacent irregular computation is parallelized on modern hardware: the paper presents two GPU parallelizations of modularity-optimizing graph clustering, with pLeiden the first parallel implementation to provably preserve all quality guarantees of sequential Leiden, evaluated on 57 test graph instances from 10 families primarily on an NVIDIA B200 GPU, finding that uncoarsening is vital given a synchronous local move and that optimizations such as kernel fission and gather-free contraction contribute to runtime or quality. A microtubule lattice with defects is a graph, and community detection on it would be the natural first analysis of whether the automaton's dynamics segregate into computationally useful domains; [6] provides the parallel machinery and, importantly, the caution that synchronous local moves require careful uncoarsening — the same synchronous-update hazard Section 4.7 identifies for the lattice automaton.
+
+Two framing works bound the interpretation. The Bekenstein bound discussed in [11] — the maximum amount of information containable in a finite region of space — sets an upper envelope on how much information any microtubule volume could carry, and Section 4.5 computes that envelope for a 13-dimer segment to check that the conjectured bit density is not information-theoretically absurd. The map-territory distinction in [10] — that abstractions derived from perception differ from their source, and that confusing the symbolic representation with the referenced entity leads to categorical errors — is the epistemic hazard of this whole program: "transistor" is a map, tubulin is the territory, and the purpose of the present budget is to test the map against the territory's physics rather than to extend the metaphor by vocabulary. The classical-brain framing of [12], which describes the standard model of the brain as a network of biological wires in which information processing is governed by the bulk movement of ions and molecules on millisecond scales, states the baseline against which any faster, lower-dissipation cellular computation would have to be an addition rather than a replacement; we adopt that conservative baseline. We do not rely on the superdeterministic cosmology of [9], whose claims about universal initial correlation and the failure of statistical independence lie outside what an energy budget can test.
+
+## 3. Methods
+
+This paper is analytical. It performs no experiment, no measurement and no simulation; it derives an energy and dynamics budget from published physical quantities plus explicitly stated assumptions, and it computes every number with shown arithmetic.
+
+**Model of the switch.** Each tubulin dimer is modeled as a two-state element. State 0 and state 1 are the two conformational configurations of the dimer; the physical candidate for the transition is the GTP-to-GDP change that Fygenson [4] identifies as driving dynamic instability, with GDP protofilaments curving away from the microtubule axis. The energy landscape is reduced to three terms: (i) a mechanical term, treating the conformational displacement as a spring extended by a distance $x$ against an effective stiffness $k_{\text{eff}}$; (ii) an electrostatic term, treating the dimer's dipole moment in an ambient field as the state-energy difference; (iii) a coupling term, treating neighbor interaction as a screened dipole-dipole interaction.
+
+**Model of the lattice.** The microtubule is modeled as a one-dimensional array of 13 protofilaments, each a chain of dimers, giving a two-dimensional hexagonal-ish neighborhood on the outer surface. Dynamics are assessed in the cellular-automaton abstraction of [5]: each dimer is a process with a binary local state, updated as a function of its own state and its neighbors' states, with the update synchronized or asynchronous as specified per case.
+
+**Assumptions.** Every input not taken from a cited work is stated here as an assumption:
+
+- $T = 310$ K, physiological temperature.
+- $k_B = 1.380649 \times 10^{-23}$ J/K, $\varepsilon_0 = 8.854 \times 10^{-12}$ F/m, $h$ and $c$ at their SI values, $N_A = 6.02214 \times 10^{23}$ /mol.
+- Conformational displacement $x = 1$ nm, an order-of-magnitude figure consistent with the nanometer-scale curving motions described in [4].
+- Effective stiffness $k_{\text{eff}}$ swept over $0.01$ to $1$ N/m, since no source gives the dimer's lateral stiffness; the sweep brackets soft (thermal-fluctuation-dominated) and stiff (protein-backbone-dominated) limits.
+- Ambient cellular electric field $E = 10^{7}$ V/m, a standard order of magnitude for transmembrane-scale fields; treated as an assumption because no cited source gives the in-vivo field at the microtubule.
+- Dielectric screening of dipole-dipole coupling by the cytosol at $\varepsilon_r = 80$, the static value for bulk water; the actual screened value at 8 nm separation is an open question (Section 6).
+- Electronic switching comparison: $C = 1$ fF gate capacitance at $V = 1$ V, giving $E_{\text{sw}} = \tfrac{1}{2}CV^2$; this is a textbook-order assumption used only for the order-of-magnitude contrast, not a claim about any specific process node.
+- Switching rate $f = 1$ kHz for the heat-load projection, consistent with the millisecond timescales of the conformational dynamics in [4]; the projection is labeled as such and scaled linearly in $f$.
+
+**Derivation procedure.** Each quantity is derived from first principles in Section 4 with every arithmetic step shown. The Landauer limit is derived from $E_L = k_B T \ln 2$. The mechanical energy from $E_m = \tfrac{1}{2} k_{\text{eff}} x^2$. The dipole energy from $U = -\mathbf{p}\cdot\mathbf{E}$, taking magnitudes. The coupling from $U_{dd} = \frac{p^2}{4\pi\varepsilon_0 \varepsilon_r r^3}$ for head-to-tail aligned dipoles at center-to-center distance $r$. Densities from the microtubule geometry (outer diameter 25 nm, lumen diameter 15 nm, 13 protofilaments, 8 nm dimer axial repeat). The Bekenstein envelope from $I \le 2\pi R E / (\hbar c \ln 2)$ as formulated in [11].
+
+## 4. Analysis
+
+### 4.1 The Landauer limit at physiological temperature
+
+The irreducible minimum energy to erase one bit of information at temperature $T$ is
+
+$$E_L = k_B T \ln 2.$$
+
+With $k_B = 1.380649 \times 10^{-23}$ J/K and $T = 310$ K:
+
+$$k_B T = 1.380649 \times 10^{-23} \times 310 = 4.28001 \times 10^{-21}\ \text{J}.$$
+
+$$E_L = 4.28001 \times 10^{-21} \times 0.693147 = 2.96666 \times 10^{-21}\ \text{J}.$$
+
+So the floor for any conformational bit operating in the body is $E_L = 2.967 \times 10^{-21}$ J, or equivalently $\ln 2 = 0.6931\,k_B T$. In molar terms, $E_L \times N_A = 2.96666 \times 10^{-21} \times 6.02214 \times 10^{23} = 1.7866 \times 10^{3}$ J/mol $\approx 1.79$ kJ/mol. Any claim that conformational switching is "heat-free" can mean at most that it operates near this floor; it cannot mean zero dissipation, because erasure has a nonzero thermodynamic cost.
+
+### 4.2 Mechanical switching energy
+
+Model the conformational change as extending a spring of stiffness $k_{\text{eff}}$ by $x = 1$ nm:
+
+$$E_m = \tfrac{1}{2} k_{\text{eff}} x^2 = \tfrac{1}{2} k_{\text{eff}} \times (10^{-9}\ \text{m})^2 = \tfrac{1}{2} k_{\text{eff}} \times 10^{-18}\ \text{m}^2.$$
+
+At the soft end, $k_{\text{eff}} = 0.01$ N/m:
+
+$$E_m = 0.5 \times 0.01 \times 10^{-18} = 5.0 \times 10^{-21}\ \text{J}.$$
+
+In units of $k_B T$ (with $k_B T = 4.28001 \times 10^{-21}$ J):
+
+$$\frac{E_m}{k_B T} = \frac{5.0 \times 10^{-21}}{4.28001 \times 10^{-21}} = 1.168\,k_B T.$$
+
+At the stiff end, $k_{\text{eff}} = 1$ N/m:
+
+$$E_m = 0.5 \times 1 \times 10^{-18} = 5.0 \times 10^{-19}\ \text{J}, \qquad \frac{E_m}{k_B T} = \frac{5.0 \times 10^{-19}}{4.28001 \times 10^{-21}} = 116.8\,k_B T.$$
+
+The ratio to the Landauer limit:
+
+$$\frac{5.0 \times 10^{-21}}{2.96666 \times 10^{-21}} = 1.685 \quad\text{and}\quad \frac{5.0 \times 10^{-19}}{2.96666 \times 10^{-21}} = 168.5.$$
+
+Interpretation: the mechanical switching energy spans a factor of 100 across the plausible stiffness range, from $1.17\,k_B T$ (dangerously close to thermal noise, unreliable as a bit) to $116.8\,k_B T$ (robust but dissipating 168.5 times the Landauer floor). "Heat-free" is therefore a property of a parameter regime — roughly $k_{\text{eff}} \lesssim 0.1$ N/m keeps $E_m$ within a factor of 17 of the Landauer limit — and not a generic property of conformational switching.
+
+### 4.3 Dipole state energies
+
+Mershin and co-workers [1] computed $|p_{\alpha}| = 552$ D, $|p_{\beta}| = 1193$ D and $|p_{\alpha\beta}| = 1740$ D. Converting debyes to SI ($1\ \text{D} = 3.336 \times 10^{-30}$ C·m):
+
+$$p_{\alpha} = 552 \times 3.336 \times 
