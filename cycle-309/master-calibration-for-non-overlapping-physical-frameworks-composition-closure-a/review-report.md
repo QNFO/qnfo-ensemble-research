@@ -1,0 +1,1 @@
+[{"find":"| **R4** | Chain of four edges with $\\varepsilon_{\\min}=10^{-2}$ yields $\\Delta=3.94\\times10^{-2}$ (projection assuming independent edges). | — |","replace":"| **R4** | Chain of four edges with $\\varepsilon_{\\min}=10^{-2}$ yields $\\Delta=1-(1-10^{-2})^{4}=3.94\\times10^{-2}$ (projection assuming independent edges). | — |"}]
