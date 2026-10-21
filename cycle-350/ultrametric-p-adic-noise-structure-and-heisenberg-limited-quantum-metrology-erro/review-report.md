@@ -1,0 +1,5 @@
+{
+  "verdict": "pass",
+  "hard": [],
+  "soft": []
+}
