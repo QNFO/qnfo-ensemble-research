@@ -1,0 +1,6 @@
+[
+{"find":"The exponential growth described above resonates with the outlook of [3], which emphasizes that “proof theory and logic for computer science are highlighted as important future areas.”","replace":""},
+{"find":"The Wise Men puzzle exemplifies such a problem: the public‑announcement dynamics encode epistemic uncertainty that is philosophically salient. The quantitative shrinkage factor … thereby satisfying the pedagogical principle advocated in [4].","replace":""},
+{"find":"Information‑systems programmes face the challenge described in [5]: “logic curricula need adapted content and integration with formal methods.” By reallocating the contact‑hour weight vector …","replace":""},
+{"find":"The left‑variable‑inclusion companion \\(\\vdash^{l}\\) of a propositional logic \\(\\vdash\\) is obtained by forming a Plonka sum of its matrix models, as stated in [6]: “The algebraic counterpart of the left‑variable‑inclusion companion of a given logic \\(\\vdash\\) is obtained by forming a Plonka sum of the matrix models of \\(\\vdash\\).”","replace":""}
+]
