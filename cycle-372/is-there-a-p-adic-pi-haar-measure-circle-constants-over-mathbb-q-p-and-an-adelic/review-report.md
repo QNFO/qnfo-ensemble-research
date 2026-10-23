@@ -1,0 +1,1 @@
+[{"find":"## 6. Extended Derivations and Worked Examples","replace":"## 6. Discussion"}]
