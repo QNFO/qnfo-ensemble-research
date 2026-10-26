@@ -1,3 +1,12 @@
+> **MOVED, 2026-10-26.** This repository was folded into [QNFO/qnfo-research](https://github.com/QNFO/qnfo-research) under `runs/`
+> (`git subtree`: every commit of this history is reachable there, and the paths are unchanged, so every hash in every
+> `MANIFEST.json` still resolves). From `qnfo-research-exec` 0.35.0 the pipeline writes there, one atomic commit per run and its
+> paper. This repository is archived once nothing newer remains to import (the fleet files that request itself); it is never deleted.
+> Why it was split, what was missing, and how every run is now checked:
+> [`docs/PROVENANCE-STANDARD.md`](https://github.com/QNFO/qnfo-research/blob/main/docs/PROVENANCE-STANDARD.md) and
+> [`docs/REPOSITORY-AUDIT-2026-10-26.md`](https://github.com/QNFO/qnfo-research/blob/main/docs/REPOSITORY-AUDIT-2026-10-26.md).
+> Verify any run: `python3 tools/provenance.py verify` and `python3 tools/provenance.py reproduce runs/cycle-N/<slug>` in that repository.
+
 # QNFO Ensemble Research
 
 Pilot program (user directive 2026-09-08): writing multiple SEPARATE papers around the same
